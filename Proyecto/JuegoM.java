@@ -1,11 +1,21 @@
+// Importar la biblioteca Scanner para que el usuario pueda introducir los números
 import java.util.Scanner;
 
+/**
+ * Clase JuegoM que representa el juego de ajedrez (extincion).
+ * - Todavia en proceso - 
+ *
+ * @version 1.0
+ * @author Javier Alejandro Mancera Quiroz 
+ */
 public class JuegoM {
 
     public static void main(String[] args){
 
 	int participantes;
+	
 	System.out.println("¿Cuántas personas van a jugar?");
+
 	Scanner esc = new Scanner(System.in);
 	participantes = esc.nextInt();
 
