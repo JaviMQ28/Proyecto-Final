@@ -1,4 +1,4 @@
-public class Piezas{
+public abstract class Piezas{
 
     protected int x;
     protected int y;
@@ -23,4 +23,6 @@ public class Piezas{
     public void setYs(int y){
         this.y = y;
     }
+
+    public abstract boolean movValido(int x, int y, Piezas e);
 }

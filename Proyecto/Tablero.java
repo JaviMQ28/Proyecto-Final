@@ -13,9 +13,9 @@ public class Tablero{
        tablero representa el arreglo de la clase Piezas
      */
     
-    protected int x;
-    protected int y;
-    protected Piezas [] [] tablero = new Piezas [7] [7];
+    public int x;
+    public int y;
+    public Piezas [] [] tablero = new Piezas [7] [7];
 
     /**
      * Constructor sin parametros que establece con valores iniciales a cada valor del arreglo.  
@@ -88,23 +88,57 @@ public class Tablero{
 	this.y = y;
     }
 
+    /** 
+     */
+    public Piezas[][] getTablero(){
+	return tablero;
+    }
+
     /**
      * Metodo que devuelve un objeto de la clase Piezas y recibe dos numeros enteros.
      * @param x y
      * @return Objeto de la clase Piezas 
      */
     public Piezas getPieza(int x, int y){
-	return tablero[y][x];
+	return tablero[x][y];
     }
 
+    /*
+    public boolean movValido(int x, int y, Piezas e){
+	boolean m = true;
+
+	if(e.getXs() + 1 == x){
+	    return m;
+	} else {
+	    m = false;
+	    return m;
+	}
+	}*/
+    
     /**
      * Metodo que recibe dos numeros enteros y un objeto de la clase Piezas en la cual se muestra el tablero actualizado.
      * @param x y e 
      */
     public void moverPieza(int x, int y, Piezas e){
 	tablero[e.getXs()][e.getYs()] = null;
-	tablero[y][x] = new Caballo(x,y);
-	this.CrearTablero();
+
+	if (e instanceof Peon){
+	    tablero[x][y] = new Peon(x,y);
+	}
+	else if (e instanceof Torre){
+	    tablero[x][y] = new Torre(x,y);
+	}
+	else if (e instanceof Caballo){
+	    tablero[x][y] = new Caballo(x,y);
+	}
+	else if (e instanceof Dama){
+	    tablero[x][y] = new Dama(x,y);
+	}
+	else if (e instanceof Rey){
+	    tablero[x][y] = new Rey(x,y);
+	}
+	
+	//this.CrearTablero();
     }
 
     /**
@@ -119,10 +153,10 @@ public class Tablero{
         for(int i = 6; i > 0; i--){
 	    System.out.print(m);
 	    for(int j = 1; j < tablero.length; j++){
-		if (tablero[i][j] == null){
+		if (tablero[j][i] == null){
 		    System.out.print(" " + "__" + " ");
 		} else {
-		    System.out.print(" " + tablero[i][j] + " ");   
+		    System.out.print(" " + tablero[j][i] + " ");   
 		}
 	    }
 	    m--;
@@ -137,6 +171,14 @@ public class Tablero{
 	
 	System.out.println();
 	System.out.println();
+    }
+
+    public static void main(String[] args){
+
+	Tablero tablero = new Tablero();
+	tablero.CrearTablero();
+
+	System.out.println(tablero.getTablero());
     }
 }
     

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Clase Peon que representa la pieza de ajedrez (Peon) y que ocupa la herencia con la clase Piezas.
  * 
@@ -14,6 +16,18 @@ public class Peon extends Piezas{
 	super(x, y);
     }
 
+    @Override
+    public boolean movValido(int x, int y, Piezas e){
+	boolean m = true;
+	
+	if(e.getXs() + 1 == x){
+	    return m;
+	} else {
+	    m = false;
+	     return m;
+	}
+    }
+
     /**
      * Metodo que representa en forma de texto al peon. 
      */
@@ -23,5 +37,5 @@ public class Peon extends Piezas{
 	} else {
 	    return "PN";
 	}
-    }
+    }  
 }
